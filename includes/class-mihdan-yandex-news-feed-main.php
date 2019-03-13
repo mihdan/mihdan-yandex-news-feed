@@ -83,10 +83,14 @@ class Mihdan_Yandex_News_Feed_Main {
 		return $include_footer;
 	}
 
+	/**
+	 * Добавим заголовок `X-Robots-Tag`
+	 * для решения проблемы с сеошными плагинами.
+	 */
 	public function send_headers_for_aio_seo_pack() {
-		// Добавим заголовок `X-Robots-Tag`
-		// для решения проблемы с сеошными плагинами.
-		header( 'X-Robots-Tag: index, follow', true );
+		if ( is_feed( $this->feedname ) ) {
+			header( 'X-Robots-Tag: index, follow', true );
+		}
 	}
 
 	public function on_activate() {

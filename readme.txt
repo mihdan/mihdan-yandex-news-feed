@@ -1,9 +1,9 @@
-=== Mihdan: Mail.ru Pulse Feed ===
+=== Mihdan: Yandex News Feed ===
 Contributors: mihdan
 Tags: mailru, pulse, feed
 Requires at least: 2.3
 Tested up to: 5.1
-Stable tag: 0.0.2
+Stable tag: 0.0.1
 Requires PHP: 5.3
 
 WordPress плагин, формирующий ленту для новой рекомендательной системы Пульс от компании Mail.ru.
@@ -55,10 +55,5 @@ add_filter( 'mihdan_mailru_pulse_feed_feedname', function() {
 
 == Changelog ==
 
-= 0.0.2 (25.02.2019) =
-* Обновил FAQ
-* Обновил readme.txt
-* Добавил ресурсы плагина
-
-= 0.0.1 (07.02.2019) =
+= 0.0.1 (13.03.2019) =
 * Initial release
