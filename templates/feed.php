@@ -2,21 +2,23 @@
 header( 'Content-Type: ' . feed_content_type( 'rss-http' ) . '; charset=UTF-8', true );
 echo '<?xml version="1.0" encoding="UTF-8"?' . '>';
 ?>
-<rss version="2.0" xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/" xmlns:turbo="http://turbo.yandex.ru">
+<rss version="2.0" xmlns:yandex="http://news.yandex.ru" xmlns:media="http://search.yahoo.com/mrss/">
 	<channel>
-		<title><?php bloginfo_rss( 'name' ); ?></title>
+		<title><![CDATA[<?php bloginfo_rss( 'name' ); ?>]]></title>
 		<link><?php bloginfo_rss( 'url' ); ?></link>
-		<description><?php bloginfo_rss( 'description' ); ?></description>
+		<description><![CDATA[<?php bloginfo_rss( 'description' ); ?>]]></description>
 		<language><?php echo substr( get_bloginfo_rss( 'language' ), 0, 2 ); ?></language>
 		<?php do_action( 'rss2_head' ); ?>
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>
-			<item turbo="false">
+			<item>
 				<link><?php the_permalink_rss(); ?></link>
-				<title><?php the_title_rss(); ?></title>
+				<title><![CDATA[<?php the_title_rss(); ?>]]></title>
 				<author><?php the_author(); ?></author>
+				<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
 				<pubDate><?php echo esc_html( get_post_time( 'r', true ) ); ?></pubDate>
-				<yandex:full-text><![CDATA[<?php the_excerpt_rss(); ?>]]></yandex:full-text>
+				<yandex:full-text><![CDATA[<?php the_content_feed(); ?>]]></yandex:full-text>
+				<?php the_category_rss(); ?>
 				<?php if ( has_post_thumbnail() ) : ?>
 					<?php
 					$thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'large' );
